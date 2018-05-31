@@ -7,7 +7,7 @@
     @if (count($tasks) > 0)
         <ul>
             @foreach ($tasks as $task)
-                 <li>{!! link_to_route('messages.show', $message->id, ['id' => $message->id]) !!} : {{ $message->content }}</li>
+                 <li>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!} : {{ $task->content }}</li>
             @endforeach
         </ul>
     @endif
