@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasklistsTable extends Migration
+class AddStatusToTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateTasklistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasklists', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('content');
-            $table->timestamps();
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->string(VARCHAR(10));
         });
-    
+    }
 
     /**
      * Reverse the migrations.
@@ -27,6 +25,8 @@ class CreateTasklistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasklists');
+        Schema::table('tasks', function (Blueprint $table) {
+            //
+        });
     }
 }
