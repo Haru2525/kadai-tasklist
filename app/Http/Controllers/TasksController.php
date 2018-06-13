@@ -45,28 +45,23 @@ class TasksController extends Controller
     {
          if (\Auth::check()){
              $this->validate($request, [
-            'status' => 'required|max:10',   
-            'content' => 'required|max:191',
-        ]);
-        
-        $task=new Task;
-        $task->status=$request->status;
-        $task->content=$request->content;
-        $task->user_id=\Auth::user()->id;
-        $task->save();
-        
-        return redirect('/');
+                'status' => 'required|max:10',   
+                'content' => 'required|max:191',
+            ]);
+
+            $task=new Task;
+            $task->status=$request->status;
+            $task->content=$request->content;
+            $task->user_id=\Auth::user()->id;
+            $task->save();
+
+            return redirect('/');
         } else {
             return view('welcome');
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
             if (\Auth::check()) {
@@ -85,12 +80,7 @@ class TasksController extends Controller
              }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         
